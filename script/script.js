@@ -89,7 +89,7 @@ function background(state) {
   switch (state) {
     case "rain":
       body.style.cssText = `
-    background-image: url("../media/rain-bg.jpg");
+    background-image: url("./media/rain-bg.jpg");
     background-position: center center;
     background-size: cover;
             `;
