@@ -459,7 +459,7 @@ document.getElementById("vbtn-radio2").addEventListener("click",function(e){
   setDom();
 })
 async function getLocation() {
-  let loc = await fetch("http://api.weatherapi.com/v1/ip.json?key=1bd18fddc71240e0883134147240107&q=auto:ip");
+  let loc = await fetch("https://api.weatherapi.com/v1/ip.json?key=1bd18fddc71240e0883134147240107&q=auto:ip");
   let d = await loc.json();
   userLocation = d.city;
   getCurrent(userLocation);
