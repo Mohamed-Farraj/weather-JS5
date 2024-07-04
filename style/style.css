@@ -6,12 +6,9 @@ body {
   background-color: #8bc6ec;
   background-image: linear-gradient(192deg, #8bc6ec 0%, #565886 44%);
   color: white;
+  transition: all 1s;
 }
-body{
-    background-image: url("../media/sunny-bg.jpg");
-    background-position: center center;
-    background-attachment: cover;
-}
+
 .inner{
     /* From https://css.glass */
 background: rgba(0, 0, 0, 0.285);
@@ -44,7 +41,7 @@ nav .search input:focus {
 }
 .glass {
   /* From https://css.glass */
-  background: rgba(255, 255, 255, 0) ;
+  background: rgba(0, 0, 0, 0.3) ;
   border-radius: 16px ;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) ;
   backdrop-filter: blur(7.6px) ;
@@ -55,7 +52,7 @@ nav .search input:focus {
   border-bottom: 1px solid white;
 }
 .statistics .card{
-    height: fit-content;
+    height:75%;
     align-self: flex-end;
 }
 .progress-bar{
@@ -66,14 +63,78 @@ nav .search input:focus {
     margin-left: -50%;
 }
 .progress{
-    height: 5px;
+    height: 10px;
     align-items: center;
 }
 .container .forecasting .card{
-    min-width: calc(100% / 7);
+    /* min-width: calc(100% / 7);
     max-width: calc(100% / 7);
+    min-height: 40vh; */
     white-space: nowrap;
 }
+
+.tomorrow{
+width:55%
+}
+.forecasting{
+width: 45%;
+}
+
+@property --p{
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+.pie {
+  --p:20;
+  --b:22px;
+  --c:darkred;
+  --w:150px;
+  
+  width:var(--w);
+  aspect-ratio:1;
+  position:relative;
+  display:inline-grid;
+  margin:5px;
+  place-content:center;
+  font-size:25px;
+  font-weight:bold;
+  font-family:sans-serif;
+}
+.pie:before,
+.pie:after {
+  content:"";
+  position:absolute;
+  border-radius:50%;
+}
+.pie:before {
+  inset:0;
+  background:
+    radial-gradient(farthest-side,var(--c) 98%,#0000) top/var(--b) var(--b) no-repeat,
+    conic-gradient(var(--c) calc(var(--p)*1%),#0000 0);
+  -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+          mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+}
+/* .pie:after {
+  inset:calc(50% - var(--b)/2);
+  background:var(--c);
+  transform:rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
+} */
+.animate {
+  animation:p 1s .5s both;
+}
+.no-round:before {
+  background-size:0 0,auto;
+}
+.no-round:after {
+  content:none;
+}
+@keyframes p {
+  from{--p:0}
+}
+
+
 
 
 
