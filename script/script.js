@@ -232,7 +232,7 @@ function setDom() {
 
       case state.toLowerCase().includes("fog")||state.toLowerCase().includes("mist"):
         stateIconDom.setAttribute("src", "media/fog.png");
-        background('cloud');
+        background('fog');
         break
 
 
