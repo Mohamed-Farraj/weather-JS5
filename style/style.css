@@ -134,12 +134,67 @@ width: 45%;
   from{--p:0}
 }
 
+.find
+{
+  width:15%;
+}
 
 
 
-
-@media screen and (max-width: 500px) {
-  nav .search {
-    width: 100%;
-  }
+@media screen and (max-width: 900px) {
+  
+.find
+{
+  width:25%;
+}
+.current{
+  min-width: 100% !important;
+}
+.firstrow{
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.statistics{
+  flex-wrap: wrap;
+  min-width:100% !important;
+}
+.statistics .card{
+  max-width:49% !important;
+  min-width:49% !important;
+}
+.statistics .humidity{
+  max-width:100% !important;
+  min-width:100% !important;
+}
+.tomorrow .current .card{
+  flex-direction: column !important;
+}
+.tomorrow .current .card > *,.forecasting,.tomorrow,nav .search {
+  width:100% !important;
+}
+.container-fluid{
+  padding: 7px!important;
+}
+.seconddrow{
+  flex-wrap: wrap;
+}
+.forecasting .card .card-header,.forecasting .card .card-body{
+font-size: large !important;
+}
+.col-md-5,.col-md-7,.col-md-9,.col-md-3{
+  width:50% !important;
+}
+.col-md-5,.col-md-3{
+  width:40% !important;
+}
+ .row{
+  justify-content: space-between;
+}
+.card{
+  padding: 7px !important;
+}
+#stateIconT
+{
+  width:75% !important;
+}
 }
