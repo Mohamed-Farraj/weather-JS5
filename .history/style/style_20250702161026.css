@@ -169,7 +169,7 @@ width: 45%;
 .tomorrow .current .card , .forecasting .current .card{
   flex-direction: column !important;
 }
-.tomorrow .current .card > *,.forecasting , .forecasting .current .card > *,.tomorrow,nav .search {
+.tomorrow .current .card > *,.forecasting , , .forecasting .current .card,.tomorrow,nav .search {
   width:100% !important;
 }
 .container-fluid{

@@ -166,10 +166,10 @@ width: 45%;
   max-width:100% !important;
   min-width:100% !important;
 }
-.tomorrow .current .card , .forecasting .current .card{
+.tomorrow forecasting .current .card{
   flex-direction: column !important;
 }
-.tomorrow .current .card > *,.forecasting , .forecasting .current .card > *,.tomorrow,nav .search {
+.tomorrow .current .card > *,.forecasting,.tomorrow,nav .search {
   width:100% !important;
 }
 .container-fluid{
