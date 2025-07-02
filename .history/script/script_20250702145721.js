@@ -97,14 +97,14 @@ function background(state) {
   switch (state) {
     case "rain":
       body.style.cssText = `
-    background-image: url("/media/rain-bg.jpg");
+    background-image: url("./media/rain-bg.jpg");
     background-position: center center;
     background-size: cover;
             `;
       break;
     case "sunny":
       body.style.cssText = `
-    background-image: url("./../media/sunny-bg.jpg");
+    background-image: url("./media/sunny-bg.jpg");
     background-position: center center;
     background-size: cover;
     background-attachment:fixed;
@@ -113,7 +113,7 @@ function background(state) {
       break;
     case "storm":
       body.style.cssText = `
-    background-image: url("/media/storm-bg.jpg");
+    background-image: url("./media/storm-bg.jpg");
     background-position: center center;
     background-size: cover;
         background-attachment:fixed;
@@ -123,7 +123,7 @@ function background(state) {
       break;
     case "cold":
       body.style.cssText = `
-    background-image: url("/media/cold-bg.jpg");
+    background-image: url("./../media/cold-bg.jpg");
     background-position: center center;
     background-size: cover;
         background-attachment:fixed;
@@ -133,7 +133,7 @@ function background(state) {
       break;
     case "cloud":
       body.style.cssText = `
-    background-image: url("/media/cloud-bg.jpg");
+    background-image: url("./../media/cloud-bg.jpg");
     background-position: center center;
     background-size: cover;
         background-attachment:fixed;
@@ -143,7 +143,7 @@ function background(state) {
       break;
     case "clear":
       body.style.cssText = `
-    background-image: url("/media/clear-bg.jpg");
+    background-image: url("./../media/clear-bg.jpg");
     background-position: center center;
     background-size: cover;
         background-attachment:fixed;
@@ -154,7 +154,7 @@ function background(state) {
 
     case "fog":
       body.style.cssText = `
-    background-image: url("./../media/fog-bg.jpg");
+    background-image: url("./media/fog-bg.jpg");
     background-position: center center;
     background-size: cover;
         background-attachment:fixed;

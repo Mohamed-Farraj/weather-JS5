@@ -104,7 +104,7 @@ function background(state) {
       break;
     case "sunny":
       body.style.cssText = `
-    background-image: url("./../media/sunny-bg.jpg");
+    background-image: url("./media/sunny-bg.jpg");
     background-position: center center;
     background-size: cover;
     background-attachment:fixed;
