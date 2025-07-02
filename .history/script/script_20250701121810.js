@@ -173,7 +173,6 @@ function background(state) {
       break;
   }
 }
-
 async function getCurrent(search = "london") {
   try {
     let res = await fetch(
@@ -181,8 +180,6 @@ async function getCurrent(search = "london") {
       { method: "GET" }
     );
     data = await res.json();
-    console.log(data, "data from api");
-
     city = data.location.name;
     country = data.location.country;
     state = data.current.condition.text;
@@ -201,48 +198,11 @@ async function getCurrent(search = "london") {
     console.log(data);
     document.getElementById("errr").classList.add("d-none");
   } catch (error) {
-    console.log(error, "not found error");
-    document.getElementById("errr").innerText = "Invalid City Name";
+    console.log("not found error");
     document.getElementById("errr").classList.remove("d-none");
   }
 }
-
 function setDom() {
-  if (
-    !state ||
-    !city ||
-    !country ||
-    !icon ||
-    typeof uv === "undefined" ||
-    typeof celsius === "undefined" ||
-    typeof fahrenheit === "undefined" ||
-    !date ||
-    !wind ||
-    !windDirection
-  ) {
-    console.log("Incomplete data, skipping DOM update.");
-    return;
-  }
-
-  if (
-    !stateIconDom ||
-    !uvDescDom ||
-    !stateDom ||
-    !cityDom ||
-    !countryDom ||
-    !temp ||
-    !dayNameDom ||
-    !dayDateDom ||
-    !windDom ||
-    !windDirectionDom ||
-    !uvDom ||
-    !perceptionDom ||
-    !humidityDom ||
-    !humidityBar
-  ) {
-    console.log("Missing DOM elements, cannot update UI.");
-    return;
-  }
   switch (
     true //icon and background
   ) {
@@ -452,7 +412,7 @@ function future(obj) {
         </div>
 `;
 
-  for (let i = 1; i < 2; i++) {
+  for (let i = 1; i < 6; i++) {
     stat = data.forecast.forecastday[i + 1].day.condition.text;
     fDate = new Date(data.forecast.forecastday[i + 1].date);
     switch (
@@ -498,70 +458,22 @@ function future(obj) {
     }
 
     futureCards += `
-<div class="current h-100 d-flex mx-1">
-          <div class="card h-100 p-3 d-flex flex-row gap-1 glass align-self-end w-100" >
-          <div class="left w-50">
-            <div class="row h-100 g-0">
-              <div class="col-md-9">
-                <div class="card-body h-100  d-flex flex-column justify-content-between pb-0">
-                  <div class="card-title d-flex justify-content-between">
-                    <small class="h6" id="dayNameT">${
-                      days[fDate.getDay()]
-                    }</small>
-                    <small class="h6"><small>${fDate.getDate()} <small id="month">${
-      months[fDate.getMonth() - 1]
-    }</small></small></small>
-                  </div>
-                  <span class="card-text d-flex align-items-center justify-content-between">
-                    <h1 id="tempT">
-                    ${
-                      c
-                        ? data.forecast.forecastday[i + 1].day.avgtemp_c
-                        : data.forecast.forecastday[i + 1].day.avgtemp_f
-                    }<sup>o</sup>
-                    </h1>
-                  </span>
-                  <p class="card-text">
-                    <small class="fs-5 text-nowrap" id="stateT">${stateT}</small>
-                  </p>
-                </div>
-              </div>
-              <div
-                class="col-md-3 d-flex justify-content-center align-items-center"
-              >
-                <img id="stateIconT" src="${futureIconSrcT}" class="w-100 rounded-start" alt="..." />
-              </div>
-            </div>
-  </div>
-
-
-
-            <div class="right w-50">
-            <div class="row justify-content-end g-0">
-              <div class="col-md-12">
-                <div class="card-body pb-0">
-                  <div class="card-title d-flex justify-content-between">
-                    <small class="h6" >Chance Of Raining</small>
-                  </div>
-                  <span class="card-text d-flex align-items-center justify-content-center">
-                <div class="pie" style="--p:${
-                  data.forecast.forecastday[i + 1].day.daily_chance_of_rain
-                };--c:darkblue;--b:10px"> ${
-      data.forecast.forecastday[i + 1].day.daily_chance_of_rain
-    }%</div>
-
-                  </span>
-   
-                </div>
-              </div>
-          
-            </div>
-  </div>
-
-
+            <div class="card  py-1 text-center glass d-flex align-items-center flex-row w-100">
+          <div class="card-header p-0 fs-3 w-25">
+            ${days[fDate.getDay()]}
           </div>
-        </div>
-`;
+          <div class="card-body h-auto p-0 w-50 d-flex flex-row justify-content-evenly align-items-center">
+            <span class="text-wrap flex-grow-1 fs-4">${stat}</span>
+            <img src="${futureIconSrc}" class="flex-grow-0" style="width:10%" alt="..." />
+          </div>
+          <div class="card-footer d-flex justify-content-center align-items-center w-25  h2 m-0 p-0">
+            ${
+              c
+                ? data.forecast.forecastday[i + 1].day.avgtemp_c
+                : data.forecast.forecastday[i + 1].day.avgtemp_f
+            }<sup>o</sup>
+          </div>
+        </div>`;
   }
 
   document.getElementById("forecasting").innerHTML = futureCards;
@@ -581,22 +493,19 @@ document.getElementById("vbtn-radio2").addEventListener("click", function (e) {
 });
 async function getLocation() {
   try {
-    let loc = await fetch(
-      "https://api.weatherapi.com/v1/ip.json?key=1bd18fddc71240e0883134147240107&q=auto:ip"
-    );
-    let d = await loc.json();
-    userLocation = d.city;
-    if (userLocation) {
-      getCurrent(userLocation);
-    } else {
-      getCurrent("london");
-    }
-  } catch (error) {
-    console.log("Error getting location, defaulting to London", error);
+    
+  
+  let loc = await fetch(
+    "https://api.weatherapi.com/v1/ip.json?key=1bd18fddc71240e0883134147240107&q=auto:ip"
+  );
+  let d = await loc.json();
+  userLocation = d.city;
+  if (userLocation) {
+    getCurrent(userLocation);
+  } else {
     getCurrent("london");
   }
+  getCurrent(userLocation);
 }
 
-window.addEventListener("DOMContentLoaded", function () {
-  getLocation();
-});
+getLocation();

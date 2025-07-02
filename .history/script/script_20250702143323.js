@@ -174,6 +174,7 @@ function background(state) {
   }
 }
 
+
 async function getCurrent(search = "london") {
   try {
     let res = await fetch(
@@ -201,45 +202,26 @@ async function getCurrent(search = "london") {
     console.log(data);
     document.getElementById("errr").classList.add("d-none");
   } catch (error) {
-    console.log(error, "not found error");
+    console.log(error,"not found error");
     document.getElementById("errr").innerText = "Invalid City Name";
     document.getElementById("errr").classList.remove("d-none");
   }
 }
 
+
+
+
 function setDom() {
   if (
-    !state ||
-    !city ||
-    !country ||
-    !icon ||
-    typeof uv === "undefined" ||
-    typeof celsius === "undefined" ||
-    typeof fahrenheit === "undefined" ||
-    !date ||
-    !wind ||
-    !windDirection
+    !state || !city || !country || !icon || typeof uv === "undefined" || 
+    typeof celsius === "undefined" || typeof fahrenheit === "undefined" || 
+    !date || !wind || !windDirection
   ) {
     console.log("Incomplete data, skipping DOM update.");
     return;
   }
 
-  if (
-    !stateIconDom ||
-    !uvDescDom ||
-    !stateDom ||
-    !cityDom ||
-    !countryDom ||
-    !temp ||
-    !dayNameDom ||
-    !dayDateDom ||
-    !windDom ||
-    !windDirectionDom ||
-    !uvDom ||
-    !perceptionDom ||
-    !humidityDom ||
-    !humidityBar
-  ) {
+  if (!stateIconDom || !uvDescDom || !stateDom || !cityDom || !countryDom || !temp || !dayNameDom || !dayDateDom || !windDom || !windDirectionDom || !uvDom || !perceptionDom || !humidityDom || !humidityBar) {
     console.log("Missing DOM elements, cannot update UI.");
     return;
   }
@@ -497,7 +479,8 @@ function future(obj) {
         break;
     }
 
-    futureCards += `
+    futureCards += 
+        `
 <div class="current h-100 d-flex mx-1">
           <div class="card h-100 p-3 d-flex flex-row gap-1 glass align-self-end w-100" >
           <div class="left w-50">
@@ -506,11 +489,10 @@ function future(obj) {
                 <div class="card-body h-100  d-flex flex-column justify-content-between pb-0">
                   <div class="card-title d-flex justify-content-between">
                     <small class="h6" id="dayNameT">${
-                      days[fDate.getDay()]
+                      days[data.forecast.forecastday[2].date.getDay()]
+                      
                     }</small>
-                    <small class="h6"><small>${fDate.getDate()} <small id="month">${
-      months[fDate.getMonth() - 1]
-    }</small></small></small>
+                    <small class="h6" >Tomorrow</small>
                   </div>
                   <span class="card-text d-flex align-items-center justify-content-between">
                     <h1 id="tempT">
@@ -547,8 +529,8 @@ function future(obj) {
                 <div class="pie" style="--p:${
                   data.forecast.forecastday[i + 1].day.daily_chance_of_rain
                 };--c:darkblue;--b:10px"> ${
-      data.forecast.forecastday[i + 1].day.daily_chance_of_rain
-    }%</div>
+    data.forecast.forecastday[i + 1].day.daily_chance_of_rain
+  }%</div>
 
                   </span>
    
