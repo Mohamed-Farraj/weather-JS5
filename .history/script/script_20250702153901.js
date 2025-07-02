@@ -97,7 +97,7 @@ function background(state) {
   switch (state) {
     case "rain":
       body.style.cssText = `
-    background-image: url("./media/rain-bg.jpg");
+    background-image: url("/media/rain-bg.jpg");
     background-position: center center;
     background-size: cover;
             `;
@@ -154,7 +154,7 @@ function background(state) {
 
     case "fog":
       body.style.cssText = `
-    background-image: url("./media/fog-bg.jpg");
+    background-image: url("./../media/fog-bg.jpg");
     background-position: center center;
     background-size: cover;
         background-attachment:fixed;

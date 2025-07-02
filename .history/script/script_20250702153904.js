@@ -154,7 +154,7 @@ function background(state) {
 
     case "fog":
       body.style.cssText = `
-    background-image: url("./media/fog-bg.jpg");
+    background-image: url("./../media/fog-bg.jpg");
     background-position: center center;
     background-size: cover;
         background-attachment:fixed;
